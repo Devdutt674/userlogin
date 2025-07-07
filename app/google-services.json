@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "959119863823",
+    "project_id": "fir-learning-bbf24",
+    "storage_bucket": "fir-learning-bbf24.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959119863823:android:6a014282b121eba658b37a",
+        "android_client_info": {
+          "package_name": "com.dev.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVa5mfRo5i3bGTrWGgVws3OhRwwxRU7ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959119863823:android:8c82cef5ea4c553758b37a",
+        "android_client_info": {
+          "package_name": "com.dev.login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVa5mfRo5i3bGTrWGgVws3OhRwwxRU7ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959119863823:android:5a4ec7c57587b82958b37a",
+        "android_client_info": {
+          "package_name": "com.dev.practicelayout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVa5mfRo5i3bGTrWGgVws3OhRwwxRU7ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959119863823:android:973bffd3355d448f58b37a",
+        "android_client_info": {
+          "package_name": "com.dev.tourism"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVa5mfRo5i3bGTrWGgVws3OhRwwxRU7ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

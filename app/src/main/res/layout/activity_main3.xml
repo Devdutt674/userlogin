@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for Create Account screen -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tv"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Back arrow and title -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="24dp">
+
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Back arrow"
+                android:src="@android:drawable/ic_media_previous" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Account"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#E1E5EB"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="8dp"
+            android:padding="16dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:foregroundGravity="center"
+            android:shape="oval">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="User  profile icon"
+                android:src="@android:drawable/ic_menu_myplaces"
+                android:scaleType="centerInside" />
+
+
+            <ImageButton
+                android:id="@+id/cameraButton"
+                android:layout_width="48dp"
+                android:layout_height="44dp"
+                android:layout_gravity="bottom|end"
+                android:backgroundTint="#4B44F0"
+                android:background="?selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:src="@android:drawable/ic_menu_camera"
+                android:contentDescription="Camera button"
+                android:padding="6dp"
+                android:elevation="6dp"
+                android:layout_margin="0dp"
+                android:layout_marginEnd="-8dp"
+                android:layout_marginBottom="-8dp" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Full Name"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/fullNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/rounded_edit"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="Enter your full name"
+            android:textColor="#000000"
+            android:textColorHint="#A0A4A8"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="4dp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/rounded_edit"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"
+            android:textColorHint="#A0A4A8"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="4dp"
+            android:gravity="center" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/rounded_edit"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:hint="Create a password"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textColorHint="#A0A4A8"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am a"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp"
+            android:gravity="center" />
+
+
+        <RadioGroup
+            android:id="@+id/userTypeRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="32dp">
+
+            <RadioButton
+                android:id="@+id/freelancerRadio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Freelancer"
+                android:buttonTint="#4B44F0"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/clientRadio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="48dp"
+                android:text="Client"
+                android:buttonTint="#4B44F0"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/createbtn"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Create Account"
+            android:textSize="16sp"
+            android:backgroundTint="#4B44F0"
+            android:layout_marginBottom="24dp"
+           android:background="@drawable/rounded_edit" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/logInText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Log In"
+                android:textColor="#4B44F0"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
