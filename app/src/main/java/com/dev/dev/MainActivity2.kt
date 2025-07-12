@@ -6,109 +6,98 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity2 : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
+
+    private lateinit var emailEt: EditText
+    private lateinit var passwordEt: EditText
     private lateinit var loginButton: Button
     private lateinit var signUpText: TextView
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main2)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnLogin)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
-        auth = Firebase.auth
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
-
-        emailEditText = findViewById(R.id.etEmail)
-        passwordEditText = findViewById(R.id.passwordInput)
+        emailEt = findViewById(R.id.etEmail)
+        passwordEt = findViewById(R.id.etPass)
         loginButton = findViewById(R.id.btnLogin)
         signUpText = findViewById(R.id.signUpText)
 
-
         loginButton.setOnClickListener {
-            val email = emailEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
+            val email = emailEt.text.toString().trim()
+            val password = passwordEt.text.toString()
 
-            if (validateInputs(email, password)) {
-                loginUser (email, password)
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val uid = auth.currentUser?.uid
+                        if (uid != null) {
+                            firestore.collection("users").document(uid).get()
+                                .addOnSuccessListener { document ->
+                                    if (document != null && document.exists()) {
+                                        val userType = document.getString("type")
+                                        when (userType) {
+                                            "user" -> {
+                                                // Go to User Home Activity
+                                                val intent = Intent(this, UserHomeActivity::class.java)
+                                                startActivity(intent)
+                                                finish()
+                                            }
+                                            "admin" -> {
+                                                // Go to Admin Home Activity
+                                                val intent = Intent(this, AdminHomeActivity::class.java)
+                                                startActivity(intent)
+                                                finish()
+                                            }
+                                            else -> {
+                                                Toast.makeText(this, "Unknown user type", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                                    } else {
+                                        Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Failed to get user data", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                            Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this, "Login failed: ${task.exception?.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
         signUpText.setOnClickListener {
+            // Navigate back to registration activity
             val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
+            finish()
         }
-    }
-
-    public override fun onStart() {
-        super.onStart()
-
-        val currentUser  = auth.currentUser
-        if (currentUser  != null) {
-
-            redirectToMainActivity3(currentUser )
-        }
-    }
-
-    private fun validateInputs(email: String, password: String): Boolean {
-        if (email.isEmpty()) {
-            emailEditText.error = "Email is required"
-            emailEditText.requestFocus()
-            return false
-        }
-
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailEditText.error = "Please enter a valid email"
-            emailEditText.requestFocus()
-            return false
-        }
-
-        if (password.isEmpty()) {
-            passwordEditText.error = "Password is required"
-            passwordEditText.requestFocus()
-            return false
-        }
-
-        if (password.length < 6) {
-            passwordEditText.error = "Password must be at least 6 characters"
-            passwordEditText.requestFocus()
-            return false
-        }
-
-        return true
-    }
-
-    private fun loginUser (email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-
-                    val user = auth.currentUser
-                    if (user != null) {
-                        redirectToMainActivity3(user)
-                    }
-                } else {
-
-                    Toast.makeText(
-                        baseContext, "Authentication failed: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-    }
-
-    private fun redirectToMainActivity3(user: FirebaseUser ) {
-        val intent = Intent(this, MainActivity3::class.java) // Redirect to MainActivity3
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
     }
 }

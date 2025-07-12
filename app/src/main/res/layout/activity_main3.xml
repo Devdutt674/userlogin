@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Layout for Create Account screen -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/tv"
-    android:background="#FFFFFF"
+    android:background="#2196F3"
     android:padding="24dp">
 
     <LinearLayout
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Back arrow and title -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,6 @@
                 android:textColor="#000000" />
         </LinearLayout>
 
-
         <FrameLayout
             android:layout_width="96dp"
             android:layout_height="96dp"
@@ -51,14 +50,12 @@
             android:foregroundGravity="center"
             android:shape="oval">
 
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="User  profile icon"
+                android:contentDescription="User profile icon"
                 android:src="@android:drawable/ic_menu_myplaces"
                 android:scaleType="centerInside" />
-
 
             <ImageButton
                 android:id="@+id/cameraButton"
@@ -72,13 +69,12 @@
                 android:contentDescription="Camera button"
                 android:padding="6dp"
                 android:elevation="6dp"
-                android:layout_margin="0dp"
                 android:layout_marginEnd="-8dp"
                 android:layout_marginBottom="-8dp" />
 
         </FrameLayout>
 
-
+        <!-- Full Name Label and EditText -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +109,7 @@
             android:gravity="center" />
 
         <EditText
-            android:id="@+id/emailInput"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/rounded_edit"
@@ -137,7 +133,7 @@
             android:gravity="center" />
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/rounded_edit"
@@ -154,43 +150,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I am a"
+            android:text="Select User Type"
             android:textSize="14sp"
             android:textColor="#333333"
             android:layout_marginBottom="8dp"
             android:gravity="center" />
 
 
-        <RadioGroup
-            android:id="@+id/userTypeRadioGroup"
+        <Spinner
+            android:id="@+id/typeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="32dp">
-
-            <RadioButton
-                android:id="@+id/freelancerRadio"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="Freelancer"
-                android:buttonTint="#4B44F0"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:id="@+id/clientRadio"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="Client"
-                android:buttonTint="#4B44F0"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-        </RadioGroup>
+            android:layout_height="48dp"
+            android:popupBackground="#FFFFFF"
+            android:layout_marginBottom="32dp"
+            android:gravity="center" />
 
 
         <Button
@@ -201,9 +174,9 @@
             android:textSize="16sp"
             android:backgroundTint="#4B44F0"
             android:layout_marginBottom="24dp"
-           android:background="@drawable/rounded_edit" />
+            android:background="@drawable/rounded_edit" />
 
-
+       
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -226,6 +199,5 @@
                 android:textStyle="bold"
                 android:textSize="14sp" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
