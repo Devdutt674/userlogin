@@ -2,24 +2,38 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#2196F3"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- NavHostFragment hosting Admin navigation graph -->
-    <fragment
-        android:id="@+id/adminNavHostFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/admin_nav_graph"
-        app:defaultNavHost="true"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAdminWorks"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:padding="12dp" />
 
-    <!-- Bottom Navigation -->
+    <FrameLayout
+        android:id="@+id/admin_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/adminBottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/menu_admin" />
+        app:menu="@menu/menu_admin_bottom_nav" />
+
+    <Button
+        android:id="@+id/btnLogoutAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="end" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Dev"
         tools:targetApi="31">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminHomeActivity"
             android:exported="false" />
         <activity
@@ -27,6 +30,9 @@
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
+        <activity android:name=".UserExperienceActivity" />
+        <activity android:name=".AdminExperienceActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

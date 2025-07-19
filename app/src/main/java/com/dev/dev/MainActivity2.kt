@@ -69,7 +69,7 @@ class MainActivity2 : AppCompatActivity() {
                                             }
                                             "admin" -> {
                                                 // Go to Admin Home Activity
-                                                val intent = Intent(this, AdminHomeActivity::class.java)
+                                                val intent = Intent(this,AdminHomeActivity::class.java)
                                                 startActivity(intent)
                                                 finish()
                                             }
@@ -94,7 +94,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         signUpText.setOnClickListener {
-            // Navigate back to registration activity
+
             val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
             finish()
